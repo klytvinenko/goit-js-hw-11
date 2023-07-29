@@ -1,7 +1,7 @@
 import axios from "axios"; 
 import { Report } from 'notiflix/build/notiflix-report-aio';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-// import TheAuthAPI from "theauthapi";
+import TheAuthAPI from "theauthapi";
 import SimpleLightbox from  "simplelightbox";
 
 
@@ -38,7 +38,7 @@ function onSubmitSearch(event) {
         loadMoreBtn.hide();
         throw new Error();
       } else {
-        Notiflix.Notify.success(`"Hooray! We found ${totalHits} images."`);
+        Notify.success(`"Hooray! We found ${totalHits} images."`);
         console.log(hits);
         return hits;
       }
@@ -54,7 +54,7 @@ function onSubmitSearch(event) {
     })
     .catch(error => {
       console.log(error);
-      Notiflix.Notify.failure(
+      Notify.failure(
         'Sorry, there are no images matching your search query. Please try again.'
       );
     })
@@ -84,7 +84,7 @@ function onLoadMore() {
     .then(() => loadMoreBtn.enable())
     .catch(error => {
       console.log(error);
-      Notiflix.Notify.failure(
+      Notify.failure(
         "We're sorry, but you've reached the end of search results."
       );
     });
@@ -126,3 +126,13 @@ function handleScroll() {
 }
 
 window.addEventListener('scroll', handleScroll);
+
+// const URL = 'https://pixabay.com/api/';
+// const key = '36426467-984cafa91003baeedab01e504';
+
+// async function servicePhoto() {
+//   const response = await fetch(`${URL}?key=${key}&q=yellow+flowers&image_type=photo`);
+//   console.log(response.json);
+// }
+// console.log('hello');
+// servicePhoto();
